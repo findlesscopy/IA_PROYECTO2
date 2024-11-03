@@ -24,70 +24,139 @@
             <select id="modelSelector" class="form-select">
                 <option value="">--Selecciona un modelo--</option>
                 <option value="linearRegression">Regresión Lineal</option>
-                <option value="polynomialRegression">Regresión Polinomial</option>
-                <option value="naiveBayes">Naive Bayes</option>
+                <option value="desitionTree">Árbol de decisión</option>
                 <option value="neuralNetwork">Red Neuronal</option>
-                <option value="kMeans">K-Means</option>
-                <option value="kNN">K-Nearest Neighbors</option>
+                <option value="polynomialRegression">Regresión Polinomial</option>
             </select>
         </section>
 
-        <section id="linearRegression" class="modelSection">
-            <div class="mb-4">
-                <h2 class="text-primary">Regresión Lineal</h2>
-                <p>Selecciona los valores de X y Y para realizar la regresión lineal</p>
-
-                <div class="mb-3">
-                    <label for="dataLinear" class="form-label">Suba un archivo</label>
-                    <input type="file" id="dataLinear" class="form-control" accept=".csv">
+        <!--- Linear Regression Section --->
+        <section id="linearRegression" class="modelSection container mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">Regresión Lineal</h2>
                 </div>
+                <div class="card-body">
+                    <p class="text-muted">Selecciona los valores de X y Y para realizar la regresión lineal</p>
 
-                <div class="d-flex gap-2">
-                    <button id="linearRegressionButton" class="btn btn-primary">Fit</button>
-                    <button id="linearRegressionPredictButton" class="btn btn-secondary">Predict</button>
-                    <button id="linearMSErrorButton" class="btn btn-warning">Mean Squared Error</button>
-                    <button id="linearR2Button" class="btn btn-success">R2</button>
-                </div>
-            </div>
+                    <!-- File Upload -->
+                    <div class="mb-3">
+                        <label for="dataLinear" class="form-label">Suba un archivo</label>
+                        <input type="file" id="dataLinear" class="form-control" accept=".csv">
+                    </div>
 
-            <div class="mb-4">
-                <p><strong>Fit:</strong> <span id="linearRegressionResult" class="text-muted"></span></p>
-                <p><strong>Predicción:</strong> <span id="linearRegressionPredictResult" class="text-muted"></span></p>
-                <p><strong>Mean Squared Error:</strong> <span id="linearMSErrorResult" class="text-muted"></span></p>
-                <p><strong>R2:</strong> <span id="linearR2Result" class="text-muted"></span></p>
-            </div>
+                    <!-- Buttons -->
+                    <div class="d-flex gap-2 mb-4">
+                        <button id="linearRegressionButton" class="btn btn-primary">Fit</button>
+                        <button id="linearRegressionPredictButton" class="btn btn-secondary">Predict</button>
+                        <button id="linearMSErrorButton" class="btn btn-warning">Mean Squared Error</button>
+                        <button id="linearR2Button" class="btn btn-success">R2</button>
+                    </div>
 
-            <div>
-                <h2 class="text-primary">Gráfica</h2>
-                <div class="card p-3">
-                    <canvas id="linearRegressionChart" width="400" height="400"></canvas>
+                    <!-- Results Section -->
+                    <div id="results-container" class="mt-3">
+                        <h3 class="h5">Resultados</h3>
+                        <p><strong>Fit:</strong> <span id="linearRegressionResult" class="text-muted"></span></p>
+                        <p><strong>Predicción:</strong> <span id="linearRegressionPredictResult"
+                                class="text-muted"></span></p>
+                        <p><strong>Mean Squared Error:</strong> <span id="linearMSErrorResult"
+                                class="text-muted"></span></p>
+                        <p><strong>R2:</strong> <span id="linearR2Result" class="text-muted"></span></p>
+                    </div>
+
+                    <!-- Chart Section -->
+                    <div class="mt-4">
+                        <h3 class="h5 text-primary">Gráfica</h3>
+                        <div class="card p-3">
+                            <canvas id="linearRegressionChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!--- Elige Red Neuronal -->
-        <section id="neuralNetwork" class="modelSection">
-            <div class="mb-4">
-                <h2 class="text-primary">Redes Neuronales</h2>
 
-                <div class="mb-3">
-                    <label for="configRedData" class="form-label">Subir Configuración</label>
-                    <input type="file" id="configRedData" class="form-control" accept=".csv">
-
-                    <label for="trainingRedData" class="form-label">Subir Entrenamiento</label>
-                    <input type="file" id="trainingRedData" class="form-control" accept=".csv">
-
-                    <label for="predictionRedData" class="form-label">Subir Predicción</label>
-                    <input type="file" id="predictionRedData" class="form-control" accept=".csv">
-
-                    <button id="redButton" class="btn btn-primary">Entrenar y Predecir</button>
+        <!--- Neural Network Section --->
+        <section id="neuralNetwork" class="modelSection container mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">Redes Neuronales</h2>
                 </div>
+                <div class="card-body">
+                    <!-- Upload Configuration -->
+                    <div class="mb-3">
+                        <label for="configRedData" class="form-label">Subir Configuración</label>
+                        <input type="file" id="configRedData" class="form-control" accept=".csv">
+                    </div>
+
+                    <!-- Upload Training Data -->
+                    <div class="mb-3">
+                        <label for="trainingRedData" class="form-label">Subir Entrenamiento</label>
+                        <input type="file" id="trainingRedData" class="form-control" accept=".csv">
+                    </div>
+
+                    <!-- Upload Prediction Data -->
+                    <div class="mb-3">
+                        <label for="predictionRedData" class="form-label">Subir Predicción</label>
+                        <input type="file" id="predictionRedData" class="form-control" accept=".csv">
+                    </div>
+
+                    <!-- Train and Predict Button -->
+                    <div class="d-flex gap-2 mb-3">
+                        <button id="redButton" class="btn btn-success">Entrenar y Predecir</button>
+                    </div>
+
+                    <!-- Prediction Results -->
+                    <div id="results-container" class="mt-4">
+                        <h3 class="h5">Resultados de Predicción</h3>
+                        <p id="redResultados" class="border p-2 rounded bg-light text-secondary"
+                            style="min-height: 50px;">
+                            <!-- Aquí se mostrarán los resultados -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
+        <!--- Decision Tree Section --->
+        <section id="desitionTree" class="modelSection container mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">Decision Trees</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Upload Training Data -->
+                    <div class="mb-3">
+                        <label for="trainingTreeData" class="form-label">Subir Entrenamiento</label>
+                        <input type="file" id="trainingTreeData" class="form-control" accept=".csv">
+                    </div>
 
-                <div id="results-container">
-                    <h3>Resultados de Predicción</h3>
-                    <p id="redResultados"></p>
+                    <!-- Upload Prediction Data -->
+                    <div class="mb-3">
+                        <label for="predictionTreeData" class="form-label">Subir Predicción</label>
+                        <input type="file" id="predictionTreeData" class="form-control" accept=".csv">
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex gap-2 mb-3">
+                        <button id="treeButton" class="btn btn-success">Generar Árbol</button>
+                        <button id="predictTreeButton" class="btn btn-info text-white">Predecir</button>
+                    </div>
+
+                    <!-- Prediction Results -->
+                    <div id="results-container" class="mt-4">
+                        <h3 class="h5">Resultados de Predicción</h3>
+                        <p id="treeResultados" class="border p-2 rounded bg-light text-secondary"
+                            style="min-height: 50px;">
+                            <!-- Aquí se mostrarán los resultados -->
+                        </p>
+                    </div>
+
+                    <!-- Tree Graph -->
+                    <div id="treeGraph" class="mt-4 p-3 border rounded" style="width: 100%; height: 400px;">
+                        <!-- Aquí se renderizará el gráfico del árbol de decisión -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -95,59 +164,51 @@
 
         <!--- Elige Regresión Polinomial -->
         <section id="polynomialRegression" class="modelSection">
-            <h2>Regresión Polinomial</h2>
-            <p>Selecciona los valores de X y Y para realizar la regresión polinomial</p>
-            <label for="xValuesPoly">Valores de X:</label>
-            <input type="text" id="xValuesPoly" placeholder="Escribe los valores de X">
-            <label for="yValuesPoly">Valores de Y:</label>
-            <input type="text" id="yValuesPoly" placeholder="Escribe los valores de Y">
-            <label for="degree">Grado del polinomio:</label>
-            <input type="number" id="degree" placeholder="Escribe el grado del polinomio">
-            <button id="polynomialRegressionButton">Calcular</button>
-            <p>Resultado: <span id="polynomialRegressionResult"></span></p>
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">Regresión Polinomial</h2>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Selecciona los valores de X y Y para realizar la regresión polinomial</p>
 
+                    <!-- File Upload -->
+                    <div class="mb-3">
+                        <label for="dataPolinomial" class="form-label">Suba un archivo</label>
+                        <input type="file" id="dataPolinomial" class="form-control" accept=".csv">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gradoPolinomial" class="form-label">Grado del Polinomio</label>
+                        <input type="numer" id="gradoPolinomial" class="form-control">
+                    </div>
+                    <!-- Buttons -->
+                    <div class="d-flex gap-2 mb-4">
+                        <button id="polinomialRegressionButton" class="btn btn-primary">Fit</button>
+                        <button id="polinomialRegressionPredictButton" class="btn btn-secondary">Predict</button>
+                        <button id="polinomialMSErrorButton" class="btn btn-warning">Mean Squared Error</button>
+                        <button id="polinomialR2Button" class="btn btn-success">R2</button>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div id="results-container" class="mt-3">
+                        <h3 class="h5">Resultados</h3>
+                        <p><strong>Fit:</strong> <span id="polynomialRegressionResult" class="text-muted"></span></p>
+                        <p><strong>Predicción:</strong> <span id="polynomialRegressionPredictResult"
+                                class="text-muted"></span></p>
+                        <p><strong>Mean Squared Error:</strong> <span id="polynomialMSErrorResult"
+                                class="text-muted"></span></p>
+                        <p><strong>R2:</strong> <span id="polynomialR2Result" class="text-muted"></span></p>
+                    </div>
+
+                    <!-- Chart Section -->
+                    <div class="mt-4">
+                        <h3 class="h5 text-primary">Gráfica</h3>
+                        <div class="card p-3">
+                            <canvas id="polynomialRegressionChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-
-        <!--- Elige Naive Bayes -->
-        <section id="naiveBayes" class="modelSection">
-            <h2>Naive Bayes</h2>
-            <p>Selecciona los valores de X y Y para realizar el modelo de Naive Bayes</p>
-            <label for="xValuesNB">Valores de X:</label>
-            <input type="text" id="xValuesNB" placeholder="Escribe los valores de X">
-            <label for="yValuesNB">Valores de Y:</label>
-            <input type="text" id="yValuesNB" placeholder="Escribe los valores de Y">
-            <button id="naiveBayesButton">Calcular</button>
-            <p>Resultado: <span id="naiveBayesResult"></span></p>
-        </section>
-
-
-
-        <!--- Elige K-Means -->
-        <section id="kMeans" class="modelSection">
-            <h2>K-Means</h2>
-            <p>Selecciona los valores de X y Y para realizar el modelo de K-Means</p>
-            <label for="xValuesKM">Valores de X:</label>
-            <input type="text" id="xValuesKM" placeholder="Escribe los valores de X">
-            <label for="yValuesKM">Valores de Y:</label>
-            <input type="text" id="yValuesKM" placeholder="Escribe los valores de Y">
-            <button id="kMeansButton">Calcular</button>
-            <p>Resultado: <span id="kMeansResult"></span></p>
-
-        </section>
-
-        <!--- Elige K-Nearest Neighbors -->
-        <section id="kNN" class="modelSection">
-            <h2>K-Nearest Neighbors</h2>
-            <p>Selecciona los valores de X y Y para realizar el modelo de K-Nearest Neighbors</p>
-            <label for="xValuesKNN">Valores de X:</label>
-            <input type="text" id="xValuesKNN" placeholder="Escribe los valores de X">
-            <label for="yValuesKNN">Valores de Y:</label>
-            <input type="text" id="yValuesKNN" placeholder="Escribe los valores de Y">
-            <button id="kNNButton">Calcular</button>
-            <p>Resultado: <span id="kNNResult"></span></p>
-        </section>
-    </div>
-
 
 
     <!-- Scripts para cada modelo -->
@@ -162,6 +223,12 @@
 
     <script src="js/RedNeuronal.js"></script>
     <script src="js/functionRedNeuronalModel.js"></script>
+
+    <script src="js/DesitionTree.js"></script>
+    <script src="js/functionDesitionTree.js"></script>
+
+    <script src="js/PolynomialModel.js"></script>
+    <script src="js/functionPolynomialModel.js"></script>
 </body>
 
 </html>
